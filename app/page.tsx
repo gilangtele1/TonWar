@@ -53,8 +53,7 @@ export default function Home() {
   useEffect(() => {
     if (!tonConnectUIRef.current) {
       const tonConnect = new TonConnectUI({
-        manifestUrl:
-          "https://porto-woad-nu.vercel.app/tonconnect-manifest.json",
+        manifestUrl: "https://ton-war-xi.vercel.app/tonconnect-manifest.json",
         buttonRootId: "ton-connect",
       });
       tonConnectUIRef.current = tonConnect;
