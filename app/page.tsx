@@ -102,7 +102,7 @@ export default function Home() {
         fetchTransactions();
       }, 2 * 60 * 1000);
     } catch (error) {
-      console.error("Gagal kirim transaksi:", error);
+      console.error("Failed to send transaction:", error);
     }
   };
 
@@ -132,7 +132,7 @@ export default function Home() {
         >
           {testimonials.length === 0 ? (
             <p className="text-center text-gray-500 italic mt-10">
-              Belum ada pesan yang masuk.
+              Loading ...
             </p>
           ) : (
             [...testimonials].reverse().map((t, i) => {
@@ -150,14 +150,14 @@ export default function Home() {
                     }`}
                   >
                     <div className="text-xs opacity-70 mb-1">
-                      {new Date(t.utime * 1000).toLocaleString("id-ID", {
+                      {new Date(t.utime * 1000).toLocaleString("en-US", {
                         dateStyle: "medium",
                         timeStyle: "short",
                       })}
                     </div>
                     {!isSelf && (
                       <div className="text-xs text-blue-600 truncate mb-1">
-                        Dari: {t.name}
+                        From: {t.name}
                       </div>
                     )}
                     <div className="text-sm break-words whitespace-pre-wrap">
@@ -177,7 +177,7 @@ export default function Home() {
             type="text"
             className="flex-grow border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300 text-sm"
             placeholder={
-              userAddress ? "Tulis pesan..." : "Connect wallet first"
+              userAddress ? "Write a message..." : "Connect wallet first"
             }
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
@@ -188,7 +188,7 @@ export default function Home() {
             disabled={!userAddress || !inputMessage.trim()}
             className="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded text-sm sm:text-base disabled:opacity-50"
           >
-            Kirim
+            Send
           </button>
         </footer>
       </div>
