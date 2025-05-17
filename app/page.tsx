@@ -176,13 +176,16 @@ export default function Home() {
           <input
             type="text"
             className="flex-grow border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300 text-sm"
-            placeholder="Tulis pesan..."
+            placeholder={
+              userAddress ? "Tulis pesan..." : "Connect wallet first"
+            }
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
+            disabled={!userAddress}
           />
           <button
             onClick={sendTransaction}
-            disabled={!inputMessage.trim()}
+            disabled={!userAddress || !inputMessage.trim()}
             className="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded text-sm sm:text-base disabled:opacity-50"
           >
             Kirim
